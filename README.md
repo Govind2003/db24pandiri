@@ -1,3 +1,3 @@
 # fwb24pandiri
 i live in horizon west apartment70
-[link to heroku server](https://fwb24pandiri.herokuapp.com)
+[link to heroku server](https://db24pandiri.herokuapp.com)
