@@ -1,8 +1,15 @@
 var mug = require('../models/mug'); 
  
-// List of all mug
-exports.mug_list = function(req, res) { 
-    res.send('NOT IMPLEMENTED: mug list'); 
+// List of all mugs 
+exports.mug_list = async function(req, res) { 
+    try{ 
+        themugs = await mug.find(); 
+        res.send(themugs); 
+    } 
+    catch(err){ 
+        res.status(500); 
+        res.send(`{"error": ${err}}`); 
+    }   
 }; 
  
 // for a specific mug. 
