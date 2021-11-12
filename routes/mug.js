@@ -1,9 +1,7 @@
-var express = require('express');
-var router = express.Router();
-
+var express = require('express'); 
+const mug_controlers= require('../controllers/mug'); 
+var router = express.Router(); 
+ 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('mug', { title: 'Search Results mugs' });
-});
-
+router.get('/', mug_controlers.mug_view_all_Page);
 module.exports = router;
