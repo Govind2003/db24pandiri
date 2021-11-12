@@ -2,7 +2,7 @@ extends layout
 
 block content
   h1= title
-  - const tree = ['mug_type','size','age']
+  - const tree = [{mug_type:"plastic",size:"small",age:"11"},{mug_type:"steel",size:"medium",age:"14"},{mug_type:"iron",size:"large",age:"8"}]
   - let results;
   script.
     function buy(x){
