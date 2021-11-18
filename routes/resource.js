@@ -28,4 +28,6 @@ router.get('/resource/mug/:id', mug_controller.mug_detail);
 // GET request for list of all mug items. 
 router.get('/resource/mug', mug_controller.mug_list); 
  
+
+
 module.exports = router;

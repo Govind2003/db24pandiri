@@ -1,0 +1,23 @@
+extends layout
+block content
+ h1= title
+ h2 No instance to display
+ if (toShow == null)
+ else
+    - let mugid = toShow._id
+    - let mug_type = toShow.mug_type
+    - let mugcost = toShow.cost
+    - let mugsize = toShow.size
+    div
+    div.row
+    div(class='mugAttr mr-3') mug ID is:
+    div #{mugid}
+    div.row
+    div(class='mugAttr mr-3') mug Type is:
+    div #{mug_type}
+    div.row
+    div(class='mugAttr mr-3') mug Size is:
+    div #{mugsize}
+    div.row
+    div(class='mugAttr mr-3') mug Cost is:
+    div #{mugcost}

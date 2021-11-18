@@ -1,0 +1,49 @@
+extends layout
+block content
+    h1= title
+    if (toShow == null)
+        h2 No instance to delete
+    else
+    - let mugid = toShow._id
+    - let mug_type = toShow.mug_type
+    - let mugcost = toShow.cost
+    - let mugsize = toShow.size
+    - let actionid = "/resource/mugs/" + mugid
+    script let actionid = "#{actionid}"
+    div
+    div.row
+        div(class='mugAttr mr-3') mug ID is:
+        div #{mugid}
+    div.row
+        div(class='mugAttr mr-3') mug Type is:
+        div #{mug_type}
+    div.row
+        div(class='mugAttr mr-3') mug Size is:
+        div #{mugsize}
+    div.row
+        div(class='mugAttr mr-3') mug Cost is:
+        div #{mugcost}
+    button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete
+    button(class="btn btn-secondary m-2" onclick="cancel()") Cancel
+    script.
+        function cancel() {
+        // Go back to the home page for the mug collection
+        window.location.href='/mugs'
+        }
+        script.
+        function deleteOnid() {
+        console.log("starting delete")
+        // delete first
+        fetch(actionid, {
+        method: 'DELETE' // Don't need a body for the delete
+        }).then((resp) => {
+        return resp.json(); // or resp.text() or whatever the server sends
+        }).then((body) => {
+        alert("Delete succeded")
+        window.location.href='/mugs'
+        // TODO handle body
+        }).catch((error) => {
+        // TODO handle error
+        alert("Delete failed " + error )
+        });
+        }

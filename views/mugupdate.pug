@@ -1,0 +1,43 @@
+extends layout
+block content
+    h1= title
+     if (toShow == null)
+        h2 No instance to update
+    else
+        - let mugid = toShow._id
+        - let mug_type = toShow.mug_type
+        - let mugcost = toShow.cost
+        - let mugsize = toShow.size
+
+        div.row(class='mb-2')
+            div.mr-1 ID is
+            div #{mugid}
+            - let actionid = "/resource/mugs/" + mugid
+        form(id='mugForm', action= actionid, method="PUT")
+            div.form-group
+                label.mugAttr(for='mug_type') mug type
+                input#mug_type(type='text', name='mug_type', value= mug_type )
+            div.form-group
+                label.mugAttr(for='size') mug size
+                input#size(type='text', name='size', value= mugsize )
+            div.form-group
+                label.mugAttr(for='cost') mug cost
+                input#cost(type='number', name='cost', value= mugcost )
+            input(type="submit")
+        script.
+            document.forms['mugForm'].addEventListener('submit', (event) => {
+            event.preventDefault();
+            // TODO do something here to show user that form is being submitted
+            fetch(event.target.action, {
+            method: 'PUT',
+            body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+            }).then((resp) => {
+            return resp.json(); // or resp.text() or whatever the server sends
+            }).then((body) => {
+            alert("Update succeded")
+            // TODO handle body
+            }).catch((error) => {
+            // TODO handle error
+            alert("Update failed " + error )
+            });
+            });
