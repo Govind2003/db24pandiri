@@ -8,7 +8,12 @@ block content
     function buy(x){
       alert('Purchased Item: ' + x)
    } 
+    function dispatch(path){ 
+    window.location.href=path 
+   } 
   div(class='container-fluid')
-    div(class='row')
+    div(class='row m-1')
       each item, index in sets
+        - let destination = `dispatch(\"/mug/update?id=${item._id}\")` 
         div(class='col-sm-2' onclick='buy('+index+')') #{item.mug_type}
+        button.btn( class="btn-primary ml-1", onclick= destination) Update 
