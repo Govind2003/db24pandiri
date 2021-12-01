@@ -1,6 +1,8 @@
 extends layout
 
 block content
+ - let create = `dispatch(\"mug/create\")`
+  button.btn(class="btn-primary m1-1", onclick=create) Create
   h1= title
   - 
     let sets =  results;
@@ -14,6 +16,10 @@ block content
   div(class='container-fluid')
     div(class='row m-1')
       each item, index in sets
-        - let destination = `dispatch(\"/mug/update?id=${item._id}\")` 
+        - let destination = `dispatch(\"/mug/update?id=${item._id}\")`
+        - let detail=`dispatch(\"/mug/detail?id=${item._id}\")`
+        - let de=`dispatch(\"/mug/delete?id=${item._id}\")` 
         div(class='col-sm-2' onclick='buy('+index+')') #{item.mug_type}
-        button.btn( class="btn-primary ml-1", onclick= destination) Update 
+        button.btn( class="btn-primary ml-1", onclick= destination) Update
+        button.btn( class="btn-secondary ml-2", onclick=detail ) Get Detail page
+        button.btn( class="btn-warning ml-2", onclick=de ) Delete 

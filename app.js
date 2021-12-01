@@ -86,7 +86,8 @@ app.use(function(err, req, res, next) {
 
 // We can seed the collection if needed on server start
 async function recreateDB(){
-  // Delete everything await ageume.deleteMany();
+  // Delete everything 
+  await mug.deleteMany();
   let instance1 = new mug({mug_type:"plastic", size:"small", age:"11"});
   instance1.save( function(err,doc) {
   if(err) return console.error(err);
